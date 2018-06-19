@@ -43,6 +43,13 @@ namespace LibraryProject
             }
         }
 
+        public Book RemoveBook(Book book)
+        {
+            _collection.Remove(book);
+            return book;
+        }
+
+
         public int GetCapacity()
         {
             return _capacity;
