@@ -18,7 +18,7 @@ namespace BorrowerTest
         public void Initialize()
         {
             borrower = new Borrower("Marky T");
-            book = new Book("Let The Right One In", "John Ajvide Lindqvist");
+            book = new Book("Let The Right One In", "John Ajvide Lindqvist", "Horror");
             bookArray = new ArrayList();
             bookArray.Add(book);
             library = new Library(bookArray, "Fountainbridge Library", 25);

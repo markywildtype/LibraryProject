@@ -59,5 +59,22 @@ namespace LibraryProject
         {
             return _capacity == CountCollection();
         }
+
+        public int CountGenre(string genre)
+        {
+            Hashtable genreHash = new Hashtable();
+            foreach(Book book in _collection)
+            {
+                if(!(genreHash[book.Genre] == null))
+                {
+                    genreHash[book.Genre] = (int)genreHash[book.Genre] + 1;
+                }
+                else
+                {
+                    genreHash[book.Genre] = 1;
+                }
+            }
+            return (int)genreHash[genre];
+        }
     }
 }

@@ -18,8 +18,8 @@ namespace LibraryProjectTests
         [TestInitialize]
         public void Initialize()
         {
-            book = new Book("The Joy of Sex", "Alex Comfort");
-            book2 = new Book("They Joy of Sex", "Alex Comforter");
+            book = new Book("The Joy of Sex", "Alex Comfort", "Sexytime Manual");
+            book2 = new Book("They Joy of Sex", "Alex Comforter", "Sexytime Manual");
             bookArray = new ArrayList();
             bookArray.Add(book);
             library = new Library(bookArray, "Ciaran and Marky's Wonder Library", 10);
@@ -58,7 +58,7 @@ namespace LibraryProjectTests
             Assert.AreEqual(false, library.IsAtCapacity());
             foreach (int num in Enumerable.Range(1, 9))
             {
-                library.AddBook(new Book("The Joy of Sex", "Alex Comfort"));
+                library.AddBook(new Book("The Joy of Sex", "Alex Comfort", "Sexytime Manual"));
             }
             Assert.AreEqual(true, library.IsAtCapacity());
         }
@@ -68,7 +68,7 @@ namespace LibraryProjectTests
         {
             foreach (int num in Enumerable.Range(1, 9))
             {
-                library.AddBook(new Book("The Joy of Sex", "Alex Comfort"));
+                library.AddBook(new Book("The Joy of Sex", "Alex Comfort", "Sexytime Manual"));
             }
             Assert.AreEqual(true, library.IsAtCapacity());
             library.AddBook(book2);
@@ -79,7 +79,7 @@ namespace LibraryProjectTests
         [TestMethod]
         public void TestCanRemoveBook()
         {
-            Book bookToRemove = new Book("The Road", "Cormac McCarthy");
+            Book bookToRemove = new Book("The Road", "Cormac McCarthy", "Dystopian");
             library.AddBook(bookToRemove);
  
             Assert.AreEqual(2, library.CountCollection());
@@ -105,6 +105,15 @@ namespace LibraryProjectTests
         {
             borrower.ReturnBook(library, book2);
             Assert.AreEqual(2, library.CountCollection());
+        }
+
+        [TestMethod]
+        public void TestCanCountByGenre()
+        {
+            library.AddBook(book2);
+            library.AddBook(new Book("Let The Right One In", "John Ajvide Lindqvist", "Horror"));
+            Assert.AreEqual(2, library.CountGenre("Sexytime Manual"));
+            Assert.AreEqual(1, library.CountGenre("Horror"));
         }
 
     }

@@ -8,10 +8,13 @@ namespace LibraryProject
         private readonly string _title;
         private readonly string _author;
 
-        public Book(string title, string author)
+        public string Genre;
+
+        public Book(string title, string author, string genre)
         {
             _title = title;
             _author = author;
+            Genre = genre;
         }
 
         public string GetTitle()
